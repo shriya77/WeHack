@@ -1,0 +1,310 @@
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Nunito+Sans:wght@400&display=swap');
+
+        html, body {
+            overflow-x: hidden;
+            background-color: #F4EBD7;
+            color: #014235;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0px;
+            padding: 0px;
+            background-color: #F4EBD7;
+            color: #014235;
+            background-image: url('analysis.png');
+        }
+        body > * {
+            flex-grow: 1; /* Allow content to grow and push footer to the bottom */
+        }
+
+        header {
+            background-color: #014235;
+            color: #F4EBD7;
+            padding: 15px 20px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        header nav {
+            width: 100%;
+        }
+
+        header nav ul {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0;
+            justify-content: flex-start;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            gap: 40px; /* Adjust this value to control space between tabs */
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 10px;
+            font-size: 18px;
+        }
+
+        nav ul li:first-child {
+            margin-right: 10px;
+            display: flex;
+            font-weight: bold;
+            font-size: 25px;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #F4EBD7;
+            font-weight: bold;
+            font-size: 18px; /* Increase this value for larger text */
+        }
+        nav ul li a:hover {
+            color: #DDDCA5;
+        }
+
+
+
+        /* Logo Styling */
+        .logo {
+            width: 60px; /* Adjust as needed */
+            height: 60px;
+            margin-left: 10px; /* Adjust this value to shift left or right */
+            margin-right: 10px; /* Controls spacing between logo and menu */
+        }
+
+        /* Adjust Menu Items */
+        nav ul li {
+            display: flex;
+            color: #F4EBD7;
+            align-items: center;
+            margin: 0 5px; /* Adjust spacing between menu items */
+        }
+
+        /* Optional: Fine-tune spacing for different screen sizes */
+        @media (max-width: 1024px) {
+            .logo {
+                margin-left: 20px; /* Adjust for tablet */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                margin-left: 5px; /* Adjust for mobile */
+            }
+        }
+
+        /* Space out the Log In section properly */
+        .user-icon {
+            width: 25px;
+            height: 25px;
+            margin-left: 0px; /* Removed extra margin */
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 120px; /* ← change from 150px to something tighter */
+        }
+
+        nav ul li:last-child {
+            margin-right: auto; /* Pushes Log In to the right */
+            display: flex;
+            align-items: center;
+            gap: 40px; /* Adjusts spacing between text and icon */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #F4EBD7;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            margin-left: 10px;
+        }
+        
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px; /* spacing between logo and text */
+            flex-shrink: 0;         /* prevent shrinking */
+            flex-grow: 0;
+        }
+
+        .nav-links-right {
+            display: flex;
+            gap: 30px;
+            margin-left: 500px; /* shifts all nav items left */
+            align-items: center;
+        }
+        
+        .nav-links-right .home-link {
+            margin-right: 20px; /* pushes Home slightly right */
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #014235;
+        }
+
+        /* Limit header/nav width */
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #014235;
+            padding: 16px 40px;
+        }
+
+        .logo img {
+            width: 20px; /* Adjust size manually */
+        }
+
+        .brand {
+            font-size: 40px;       /* You can go bigger like 2.2rem */
+            font-weight: bold;
+            color: #F4EBD7;
+            margin: 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #F4EBD7;
+        }
+  
+        .container {    
+            max-width: 1245px;
+            margin: 40px auto 40px auto;
+            background: #F4EBD7; /* white box with slight transparency */
+            padding: 0px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        footer {
+            background-color: #014235; 
+            color: #F4EBD7;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .input-section {
+            background: #F4EBD7;
+            padding: 25px;
+            text-align: center;
+            /*border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;*/
+        }
+        input, button {
+            margin: 10px;
+            padding: 12px;
+            width: 175px;
+            border: 2px solid #F4EBD7;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        button {
+            background: #014235;
+            color: #F4EBD7;
+            border: none;
+            cursor: pointer;
+        }
+        .chart-buttons {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap to the next line if needed */
+            justify-content: center; /* Center-align the buttons */
+            gap: 15px; /* Add spacing between buttons */
+            margin-bottom: 20px; /* Add spacing between buttons and charts */
+        }
+        
+    
+        
+        .chart-buttons button:hover {
+            background-color: #012a1c; /* Darker green on hover */
+        }
+        
+        
+        button:hover {
+            background: #013022;
+        }
+        .chart-container {
+            display: flex;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+            width: 500px;
+            text-align: center;
+            justify-content: center; /* Center horizontally */
+            align-items: center; 
+            border-radius: 10px;
+        }
+        .chart-row {
+            display: flex; /* Use Flexbox for side-by-side layout */
+            justify-content: space-between; /* Add space between charts */
+            gap: 20px; /* Add spacing between charts */
+            margin-bottom: 40px;
+            text-align: center; 
+        }
+        #dashboard {
+            display: flex; /* Use Flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh;
+            margin-top: 20px;
+            flex-direction: column;
+            /*gap: 40px;*/
+            text-align: center;
+        }
+        .chart-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #2d3436;
+            font-weight: 600;
+        }
+      

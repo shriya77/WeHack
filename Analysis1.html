@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Property Comparison Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="Analysis.css">
+
+</head>
+
+<header>
+    <nav>
+      <div class="nav-wrapper">
+        <!-- Left: Logo + Brand -->
+        <div class="nav-left">
+          <a href="HomePage.html">
+            <img src="logo.png" alt="RC Logo" class="logo">
+          </a>
+          <h1 class="brand">RealtyCheck</h1>
+        </div>
+  
+        <!-- Right: Nav links -->
+        <div class="nav-right">
+          <ul class="nav-menu">
+            <li><a href="HomePage.html">Home</a></li>
+            <li><a href="Analysis1.html">Analyze Property</a></li>
+            <li><a href="../listings/listings.html">Listings</a></li>
+            <li><a href="index.html">Forecast ROI</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+
+<body>
+<div class="container">
+    <div class="input-section">
+        <h2 style="color: #014235; margin-bottom: 20px;">Property Comparison Analysis Tool</h2>
+        <input type="text" id="url1" placeholder="First Property URL"><br>
+        <input type="text" id="url2" placeholder="Second Property URL"><br>
+        <div class="chart-buttons"></div>
+            <button onclick="showROIChart()">Projected ROI Comparison</button>
+            <button onclick="showPriceSizeChart()">Price vs Square Footage</button>
+            <button onclick="showRiskChart()">Risk Score Distribution</button>
+            <button onclick="showTrendChart()">3-Year Price Trend Comparison</button>
+            <button onclick="showDisasterChart()">Natural Disaster Risk Comparison</button>
+            <button onclick="showFoundationChart()">Foundation/ Soil Risks Comparison</button>
+        </div>
+    </div>
+
+    <div id="dashboard"></div>
+
+   
+
+    <script>
+        let database = [];
+        const colors = ['#DDDCA5', '#014235']; // Light Green and Dark Green
+        const csv = `
+Image,Address,Price,Beds/Baths,Square Footage,Walk Score,Risk Score,Vacation Viability Index,Flood Zone/ Foundation Issues,Price Trend in last 3 years,School Rating, Insurances / Tax,Projected ROI,Link,Appreciation Rate vs Avg ($249/ft²),Depreciation Rate vs Avg ($249/ft²),Investment Trends,Natural Disasters Risk,Crime Data,Foundation/Soil Risks
+1.jpg,"719 Dumont Dr, Richardson, TX 75080","$450,900",3/ 2,"1,288",72,2,8.2,X,"18.50%",8,"$6,200/$12,450","7.20%",https://www.redfin.com/TX/Richardson/719-Dumont-Dr-75080/home/31955091,"40.6% ($350/ft²)",0%,"High demand in Richardson Heights area","Moderate","Low crime area","Clay soil - foundation monitoring advised"
+2.jpg,"1908 Cap Rock, Richardson, TX 75080","$485,900",3/ 2,"1,958",92,3,7.8,C,"21.30%",9,"$5,800/$14,350","6.80%",https://www.redfin.com/TX/Richardson/1908-Cap-Rock-Dr-75080/home/31985576,"10% ($274/ft²)","-10%","Established neighborhood","Advance","Average city crime levels","Typical North TX expansive clay"
+3.jpg,"3803 Marchwood Dr, Richardson, TX 75080","$575,000",4/ 3,"2,640",81,5,"9.6",AE,"24.70%",7,"$12,500/$27,800","9.40%",https://www.redfin.com/TX/Richardson/3803-Marchwood-Dr-75082/home/32240631,-12.6% ($217.80/ft²),12.60%,"Stable family homes","Moderate","Low violent crime area","Potential foundation maintenance needed"
+4.jpg,"1711 Windsong Trl, Richardson, TX 75080","$415,000",4/ 2.5,"2,098",68,2,"6.5",X,"15.80%",6,"$4,200/$8,750","6.20%",https://www.redfin.com/TX/Richardson/1711-Windsong-Trl-75081/home/31983258,-20.5% ($198/ft²),20.50%,"Recent renovations","Moderate","Quiet suburban area","1977 construction - possible settling"
+5.jpg,"1815 Harvard Dr, Richardson, TX 75080","$430,000",3/ 2,"2,052",45,4,"7.4",X,"22.10%",7,"$3,800/$5,,650""8%",https://www.redfin.com/TX/Richardson/1815-Harvard-Dr-75081/home/31981575,-15.7% ($210/ft²),15.70%,"Recent price surge (+12% since 2021)","Advance","University Estates area","1977 build - possible aging infrastructure"
+6.jpg,"722 Devonshire Dr, Richardson, TX 75080","$435,000",3/2,"1,367",80,3,8,X,"20%",9,"$5,500/$11,000","6.80%",https://www.redfin.com/TX/Richardson/722-Devonshire-Dr-75080/home/31954840,"27.7% ($318/ft²)",0%,"Hot market - multiple offers common","Moderate","Family-oriented neighborhood","1957 construction - check foundation updates"
+7.jpg,"360 Pine Rd, Richardson, TX 75080","$505,000",3/2.5,"2,327",85,4,7.8,C,"18%",8,"$15,000/$30,000","6.80%",https://www.redfin.com/TX/Richardson/2721-N-Spring-Dr-75082/home/32172722,"-12.9% ($217/ft²)","12.90%","Premium location near park","Flood risk","Low crime suburb","1981 build - radiant barrier installed"
+8.jpg,"401 Oak Dr, Richardson, TX 75080","$750,000",4/2,"2,170",90,5,9.5,X,"25%",7,"$15,000/$30,000","9.20%",https://www.redfin.com/TX/Richardson/428-Ridge-Crest-Dr-75080/home/31921226,"39% ($346/ft²)",0%,"Luxury market with pool","Flood risk","Gated community","1968 build - recent foundation work"
+9.jpg,"310 Ridgewood Dr, Richardson, TX 75080","$825,900",4/2,"2,268",75,2,7,X,"22%",8,"$6,800/$14,200","7%",https://www.redfin.com/TX/Richardson/310-Ridgewood-Dr-75080/home/31858138,"8% ($269/ft²)","-8%","Established area","Advance","Average suburban","Clay soil typical"
+10.jpg,"711 Westover Dr, Richardson, TX 75080","$439,900",3/2,"2,284",88,7,9.8,AE,"19%",6,"$20,000/$25,000","10%",https://www.redfin.com/TX/Richardson/711-Westover-Dr-75080/home/31963218,"5% ($261/ft²)","-5%","Mid-century homes","Moderate","Family neighborhood","Potential foundation maintenance"
+` 
+
+        document.addEventListener("DOMContentLoaded", () => {
+            console.log('Page loaded. Getting compareURLs...');
+            const compareURLs = JSON.parse(localStorage.getItem('compareURLs'));
+            console.log('Loaded URLs:', compareURLs);
+            if (compareURLs && compareURLs.length === 2) {
+                document.getElementById('url1').value = compareURLs[0];
+                document.getElementById('url2').value = compareURLs[1];
+            }
+
+            database = parseCSV(csv); // Parse embedded CSV data
+            console.log('Database loaded:', database); // Debugging log
+        });
+
+        function parseCSV(csv) {
+            const rows = csv.trim().split('\n'); // Split rows by newline
+            const headers = rows.shift().split(',').map(header => header.trim()); // Extract headers
+            return rows.map(row => {
+                const values = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); // Handle commas within quotes
+                return headers.reduce((accumulator, header, index) => {
+                    accumulator[header] = values[index] ? values[index].trim().replace(/^"|"$/g, '') : '';
+                    return accumulator;
+                }, {});
+            });
+        }
+
+        function findProperty(url) {
+            return database.find(prop => prop.Link.trim().toLowerCase() === url.trim().toLowerCase());
+        }
+
+        function cleanNumber(str) {
+            return parseFloat(str.replace(/[^\d.-]/g, '')) || 0;
+        }
+
+        function createChart(containerId, data, layout) {
+            const div = document.createElement('div');
+            div.className = 'chart-container';
+            div.id = containerId;
+            document.getElementById('dashboard').innerHTML = ''; // Clear previous charts
+            document.getElementById('dashboard').appendChild(div);
+            Plotly.newPlot(containerId, data, layout);
+        }
+
+        function showROIChart() {
+            const url1 = document.getElementById('url1').value.trim();
+            const url2 = document.getElementById('url2').value.trim();
+            if (!database.length || !url1 || !url2) return alert('Please enter valid URLs and load the data.');
+
+            const prop1 = findProperty(url1);
+            const prop2 = findProperty(url2);
+            if (!prop1 || !prop2) return alert('Properties not found!');
+
+            createChart('roi-chart', [{
+                x: [prop1.Address, prop2.Address],
+                y: [cleanNumber(prop1['Projected ROI']), cleanNumber(prop2['Projected ROI'])],
+                type: 'bar',
+                marker: {color: colors}
+            }], {
+                title: 'Projected ROI Comparison',
+                yaxis: {title: 'Percentage'}
+            });
+        }
+
+        function showPriceSizeChart() {
+            const url1 = document.getElementById('url1').value.trim();
+            const url2 = document.getElementById('url2').value.trim();
+            if (!database.length || !url1 || !url2) return alert('Please enter valid URLs and load the data.');
+
+            const prop1 = findProperty(url1);
+            const prop2 = findProperty(url2);
+            if (!prop1 || !prop2) return alert('Properties not found!');
+
+            createChart('price-size-chart', [{
+                x: [cleanNumber(prop1.Price), cleanNumber(prop2.Price)],
+                y: [cleanNumber(prop1['Square Footage']), cleanNumber(prop2['Square Footage'])],
+                mode: 'markers',
+                type: 'scatter',
+                marker: {size: [40, 40], color: colors}
+            }], {
+                title: 'Price vs Square Footage',
+                xaxis: {title: 'Price (USD)'},
+                yaxis: {title: 'Square Footage'}
+            });
+        }
+
+        function showRiskChart() {
+            const url1 = document.getElementById('url1').value.trim();
+            const url2 = document.getElementById('url2').value.trim();
+            if (!database.length || !url1 || !url2) return alert('Please enter valid URLs and load the data.');
+
+            const prop1 = findProperty(url1);
+            const prop2 = findProperty(url2);
+            if (!prop1 || !prop2) return alert('Properties not found!');
+
+            createChart('risk-chart', [{
+                values: [prop1['Risk Score'], prop2['Risk Score']],
+                labels: [prop1.Address, prop2.Address],
+                type: 'pie',
+                hole: 0.4,
+                marker: {colors}
+            }], {
+                title: 'Risk Score Distribution'
+            });
+        }
+        function showDisasterChart() {
+            const url1 = document.getElementById('url1').value.trim();
+            const url2 = document.getElementById('url2').value.trim();
+
+            if (!database.length || !url1 || !url2) return alert('Please enter valid URLs and load the data.');
+
+            const prop1 = findProperty(url1);
+            const prop2 = findProperty(url2);
+
+            if (!prop1 || !prop2) return alert('Properties not found!');
+
+            const riskMapping = {
+                "Safe": 1,
+                "Moderate": 2,
+                "Flood risk": 3,
+                "Advance": 4
+            };
+
+            createChart('disaster-chart', [{
+                x: [prop1.Address, prop2.Address],
+                y: [riskMapping[prop1['Natural Disasters Risk']], riskMapping[prop2['Natural Disasters Risk']]],
+                type: 'bar',
+                marker: {color: colors}
+            }], {
+                title: 'Natural Disaster Risk Comparison',
+                xaxis: {title: 'Property Address'},
+                yaxis: {title: 'Risk Level (Numeric)'}
+            });
+        }
+        function showTrendChart() {
+            const url1 = document.getElementById('url1').value.trim();
+            const url2 = document.getElementById('url2').value.trim();
+
+            if (!database.length || !url1 || !url2) return alert('Please enter valid URLs and load the data.');
+
+            const prop1 = findProperty(url1);
+            const prop2 = findProperty(url2);
+
+            if (!prop1 || !prop2) return alert('Properties not found!');
+
+            createChart('trend-chart', [
+                {
+                    x: ['Growth in Past 3 Years'], // Example time points
+                    y: [cleanNumber(prop1['Price Trend in last 3 years'])], // Cleaned numeric value
+                    type: 'line',
+                    name: prop1.Address, // Series name
+                    marker: {color: colors[0]}
+                },
+                {
+                    x: ['Growth in Past 3 Years'], // Example time points
+                    y: [cleanNumber(prop2['Price Trend in last 3 years'])], // Cleaned numeric value
+                    type: 'line',
+                    name: prop2.Address, // Series name
+                    marker: {color: colors[1]}
+                }
+            ], {
+                title: '3-Year Price Trend Comparison',
+                yaxis: {title: 'Price Trend (%)'}
+            });
+        }
+        function showFoundationChart() {
+            const url1 = document.getElementById('url1').value.trim();
+            const url2 = document.getElementById('url2').value.trim();
+
+            if (!database.length || !url1 || !url2) return alert('Please enter valid URLs and load the data.');
+
+            const prop1 = findProperty(url1);
+            const prop2 = findProperty(url2);
+
+            if (!prop1 || !prop2) return alert('Properties not found!');
+
+            createChart('foundation-chart', [{
+                values: [1, 1],
+                labels: [prop1['Foundation/Soil Risks'], prop2['Foundation/Soil Risks']],
+                type: 'pie',
+                hole: 0.4,
+                textinfo: 'label',
+                marker: {colors}
+            }], {
+                title: 'Foundation/Soil Risks Comparison'
+            });
+        }
+    </script>
+</div>
+</body>
+<footer>
+    <p>© 2025 Realty Check. All rights reserved.</p>
+</footer>
+</html>

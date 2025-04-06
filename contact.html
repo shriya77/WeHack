@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Nunito:wght@400&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header class="site-header">
+        <nav>
+          <div class="nav-wrapper">
+            <!-- Left: Logo + Brand -->
+            <div class="nav-left">
+              <a href="HomePage.html">
+                <img src="logo.png" alt="RC Logo" class="logo">
+              </a>
+              <h1 class="brand">RealtyCheck</h1>
+            </div>
+      
+            <!-- Right: Nav links -->
+            <div class="nav-right">
+              <ul class="nav-menu">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="Analysis1.html">Analyze Property</a></li>
+                <li><a href="../listings/listings.html">Listings</a></li>
+                <li><a href="index.html">Forecast ROI</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="header">
+            <img src="ContactUs_Banner.png" alt="Contact Us Banner">
+                        <div class="header-text">Contact Us</div>
+        </div>
+
+        <div class="content">
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Email *</label>
+                        <input type="email" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Message</label>
+                        <textarea></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send</button>
+                </form>
+            </div>
+
+            <div class="map">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Realty Check. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="contact.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,532 @@
+/* styles.css */
+
+/* Open Sans & Nunito*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Nunito+Sans:wght@400&display=swap');
+
+html, body {
+    overflow-x: hidden;
+}
+  
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F4EBD7;
+    color: #014235;
+}
+
+header {
+    background-color: #014235;
+    color: #F4EBD7;
+    padding: 15px 20px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav {
+    width: 100%;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Adjust this value to control space between tabs */
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+nav ul li:first-child {
+    margin-right: 10px;
+    display: flex;
+    font-weight: bold;
+    font-size: 25px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #F4EBD7;
+    font-weight: bold;
+    font-size: 18px; /* Increase this value for larger text */
+}
+nav ul li a:hover {
+    color: #DDDCA5;
+}
+
+
+
+/* Logo Styling */
+.logo {
+    width: 60px; /* Adjust as needed */
+    height: 60px;
+    margin-left: 10px; /* Adjust this value to shift left or right */
+    margin-right: 10px; /* Controls spacing between logo and menu */
+}
+
+/* Adjust Menu Items */
+nav ul li {
+    display: flex;
+    color: #F4EBD7;
+    align-items: center;
+    margin: 0 5px; /* Adjust spacing between menu items */
+}
+
+/* Optional: Fine-tune spacing for different screen sizes */
+@media (max-width: 1024px) {
+    .logo {
+        margin-left: 20px; /* Adjust for tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        margin-left: 5px; /* Adjust for mobile */
+    }
+}
+
+/* Space out the Log In section properly */
+.user-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 0px; /* Removed extra margin */
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 15px;
+}
+
+nav ul li:first-child {
+    margin-left: 120px; /* ← change from 150px to something tighter */
+}
+
+nav ul li:last-child {
+    margin-right: auto; /* Pushes Log In to the right */
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Adjusts spacing between text and icon */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #F4EBD7;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    margin-left: 10px;
+}
+  
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* spacing between logo and text */
+    flex-shrink: 0;         /* prevent shrinking */
+    flex-grow: 0;
+}
+
+.nav-links-right {
+    display: flex;
+    gap: 30px;
+    margin-left: 500px; /* shifts all nav items left */
+    align-items: center;
+}
+  
+.nav-links-right .home-link {
+    margin-right: 20px; /* pushes Home slightly right */
+}
+  
+  
+
+.welcome-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    padding: 5px;
+    flex-wrap: wrap;
+}
+
+.welcome-content {
+    flex: 1;
+    text-align: center;
+    padding-right: 50px;
+}
+
+.welcome-content h1 {
+    color: #333;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 50px;
+    margin-top: -45px;
+}
+
+.welcome-content p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 25px;
+}
+
+.welcome-content p:last-of-type {
+    margin-bottom: 30px; 
+}
+
+.welcome-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.welcome-image img {
+    width: 120%;  
+    max-width: 1500px;
+    height: auto;
+    object-fit: cover;
+}
+
+button#sos-btn {
+    background-color: #014235;
+    color: #DDDCA5;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    display: block;
+    margin-left: 310px ;
+    margin-top: 50px;
+    object-fit: cover;
+    border-radius: 0; 
+    border: 0px ;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+
+.about, .our-story, .team {
+    text-align: center;
+    padding: 25px;
+}
+
+.about h1 {
+    font-size: 200px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 800;
+    text-align: center;
+    margin-top: -1500px;
+}
+
+.about h2 {
+    font-family: 'Open Sans', sans-serif; /* Ensure "Navigate" is in Poppins */
+    font-size: 56px; /* Set to 20px */
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.about p:first-of-type {
+    font-family: 'Open Sans', sans-serif; /* "Navigate..." text */
+    font-size: 25px; /* Ensure it's 20px */
+    font-weight: 600;
+    text-align: center;
+}
+
+.about p:not(:first-of-type) {
+    font-family: 'Nunito Sans', sans-serif !important; /* Other paragraphs in Nunito */
+    font-size: 20px !important; /* Ensure text below is 18px */
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* Styling the Image */
+.about img {
+    display: block;
+    margin: 0px;
+    width: 1680px;
+    height: 400px;
+}
+
+.fullwidth-image {
+    width: 100vw;
+    height: 50vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+  
+.fullwidth-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: middle;
+}
+
+.our-story h2 {
+    font-size: 56px; /* Set "Our Story" to 56px */
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.our-story p:first-of-type {
+    font-size: 25px; /* Set "..." to 20px */
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    text-align: center;
+}
+
+.our-story p:not(:first-of-type) {
+    font-size: 20px; /* Set the rest of the paragraphs to 18px */
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    text-align: center;
+}
+
+.team {
+    text-align: center;
+    padding: 50px;
+    background-color: #F4EBD7;
+    margin-top: -90px; /* Adjust this value as needed */
+}
+.team h2 {
+    font-size: 56px; /* Set "Meet the Team" to 56px */
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 120px;
+    margin-bottom: 100px;
+}
+
+.team-member {
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+}
+
+.team-member img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover; /* this crops consistently */
+    border-radius: 0; 
+    border: 0;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.team-member p {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.team-member p.role {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+}
+
+.social-links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-links a img {
+    width: 30px; /* Adjust the size as needed */
+    height: 30px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-links a img:hover {
+    transform: scale(1.1);
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #014235;
+}
+
+/* Limit header/nav width */
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #014235;
+    padding: 16px 40px;
+}
+
+.logo img {
+    width: 20px; /* Adjust size manually */
+}
+
+.brand {
+    font-size: 40px;       /* You can go bigger like 2.2rem */
+    font-weight: bold;
+    color: #fefae0;
+    margin: 0;
+}
+  
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #F4EBD7;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+}
+
+.login-icon {
+    width: 5px; /* Adjust icon size */
+    height: 5px;
+}
+
+.user-icon {
+    width: 25px;  /* Adjust width as needed */
+    height: 25px; /* Adjust height to maintain aspect ratio */
+    margin-left: 5px; /* Space between text and icon */
+}
+
+
+footer {
+    background-color: #014235; 
+    color: #DDDCA5;
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Floating Chatbot Button */
+#chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #DDDCA5;
+    color: #163a25;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Chatbot Container */
+#chatbot-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Chat Header */
+#chatbot-header {
+    background: #DDDCA5;
+    color: #163a25;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#chatbot-close {
+    background: none;
+    border: none;
+    color: #163a25;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Chat Messages */
+#chatbot-messages {
+    height: 250px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chat Input */
+#chatbot-input-container {
+    display: flex;
+    border-top: 1px solid #163a25;
+}
+
+#chatbot-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+#chatbot-send {
+    background: #DDDCA5;
+    color: #163a25;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}

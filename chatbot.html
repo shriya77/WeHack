@@ -1,0 +1,15 @@
+<div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header" onclick="toggleChat()">
+      💬 Realty Check Assistant
+    </div>
+    <div class="chatbot-body" id="chatBody">
+      <div class="bot-msg">Hi there! Looking to buy or rent a home?</div>
+    </div>
+    <div class="chatbot-footer">
+      <input type="text" id="userInput" placeholder="Type your message..." onkeypress="handleKey(event)" />
+      <button onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+  
+  <button class="chatbot-toggle" onclick="toggleChat()">💬</button>
+  

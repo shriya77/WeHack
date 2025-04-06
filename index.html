@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RealtyCheck - ROI Report by URL</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Include SheetJS from CDN (if needed later) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <!-- Full-width header -->
+  <header class="site-header">
+    <nav>
+      <div class="nav-wrapper">
+        <!-- Left: Logo + Brand -->
+        <div class="nav-left">
+          <a href="HomePage.html">
+            <img src="images/logo.png" alt="RC Logo" class="logo">
+          </a>
+          <h1 class="brand">RealtyCheck</h1>
+        </div>
+  
+        <!-- Right: Nav links -->
+        <div class="nav-right">
+          <ul class="nav-menu">
+            <li><a href="HomePage.html">Home</a></li>
+            <li><a href="Analysis1.html">Analyze Property</a></li>
+            <li><a href="../listings/listings.html">Listings</a></li>
+            <li><a href="index.html">Forecast ROI</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main content container -->
+  <div class="container">
+    <h1>Forecast ROI</h1>
+    <p>Enter the URLs of two properties and adjust the timeframe sliders to view their ROI report.</p>
+    
+    <div class="input-group">
+      <label for="url1">Property URL 1:</label>
+      <input type="text" id="url1" placeholder="Enter property URL">
+      <label for="timeframe1">Timeframe (years): <span id="timeframe1Value">10</span></label>
+      <input type="range" id="timeframe1" min="1" max="30" step="1" value="10">
+    </div>
+    
+    <div class="input-group">
+      <label for="url2">Property URL 2:</label>
+      <input type="text" id="url2" placeholder="Enter property URL">
+      <label for="timeframe2">Timeframe (years): <span id="timeframe2Value">10</span></label>
+      <input type="range" id="timeframe2" min="1" max="30" step="1" value="10">
+    </div>
+    
+    <button id="generateROI">Generate ROI Report</button>
+    
+    <div id="results">
+      <!-- ROI report will appear here -->
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Realty Check. All rights reserved.</p>
+  </footer>
+ 
+  <script src="script.js"></script>
+</body>
+</html>

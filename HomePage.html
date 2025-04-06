@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realty Check</title>
+    <link rel="stylesheet" href="HomePage.css">
+    <link rel="stylesheet" href="chatbot.css">
+    <script src="chatbot.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+          <div class="nav-wrapper">
+            <!-- Left: Logo + Brand -->
+            <div class="nav-left">
+              <a href="HomePage.html">
+                <img src="images/logo.png" alt="RC Logo" class="logo">
+              </a>
+              <h1 class="brand">RealtyCheck</h1>
+            </div>
+      
+            <!-- Right: Nav links -->
+            <div class="nav-right">
+              <ul class="nav-menu">
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="Analysis1.html">Analyze Property</a></li>
+                <li><a href="../listings/listings.html">Listings</a></li>
+                <li><a href="index.html">Forecast ROI</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+      
+             
+    <div class="welcome-section">
+        <div class="welcome-content">
+            <h1>WELCOME</h1>
+            <p>Discover the Hidden Truths of Real Estate –</p>
+            <p>Invest Smarter, Safer, and Confidently.</p>
+            <p> </p>
+            <button id="sos-btn">View Listings 🏠</button>    
+        </div>
+        <div class="welcome-image">
+            <img src="images/HomeScreen1.png" alt="Welcome Image">
+        </div>
+    </div>
+    
+
+    <section class="about">
+        <h2>About Us</h2>
+        <p>Make Smarter Real Estate Investments with Confidence and Clarity.</p>
+        <p>At RealityCheck, we believe that every investment should be an informed decision. <br>
+           Our mission is to empower real estate investors — especially those exploring vacation properties — <br>
+           with a digital tool that uncovers hidden risks, forecasts returns, and simplifies comparisons. <br>
+           By combining data from trusted sources like FEMA, Zillow, and Redfin, we provide insights <br>
+           that help investors avoid costly mistakes and maximize their returns.<br>
+           From risk scores to vacation home viability and ROI projections, RealityCheck is here <br>
+           to make real estate investing smarter, safer, and stress-free.</p>
+        
+    </section>
+
+    <section class="fullwidth-image">
+        <img src="images/HomeScreen2.png" alt="Full Width House Image">
+    </section>
+      
+    <section class="our-story">
+        <h2>Our Story</h2>
+        <p>RealityCheck was created <br>
+           to empower real estate investors with actionable insights.</p>
+        <p>The idea for RealityCheck came from a deep understanding of the challenges faced by investors, <br>
+        especially those exploring vacation properties. Through research and conversations with industry experts, <br>
+        we realized how difficult it can be to uncover hidden risks, forecast returns, and make confident investment <br>
+        decisions. We set out to build a solution that goes beyond basic property listings. RealityCheck combines data <br>
+        from trusted sources like FEMA, Zillow, and Redfin to provide a comprehensive view of each property. Whether <br>
+        it's assessing natural disaster risks, analyzing vacation rental potential, or comparing investment options, <br>
+        RealityCheck is here to simplify real estate investing and help you make smarter decisions.</p>
+
+    </section>
+
+    <div class="team">
+        <h2>Meet the Team</h2>
+    
+        <div class="team-member">
+            <img src="images/shriya.png" alt="Shriya Kalyan">
+            <h3>Shriya Kalyan</h3>
+            <p>Full-Stack Developer</p>
+            <div class="social-links">
+                <a href="https://github.com/shriya77" target="_blank">
+                    <img src="images/github.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/shriya-kalyan-7b8130243/" target="_blank">
+                    <img src="images/linkdein.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+    
+        <div class="team-member">
+            <img src="images/vaishnavi.jpg" alt="Vaishnavi Siravuri">
+            <h3>Vaishnavi Siravuri</h3>
+            <p>Full-Stack Developer</p>
+            <div class="social-links">
+                <a href="https://github.com/VaishnaviSiravuri" target="_blank">
+                    <img src="images/github.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/vaishnavi-siravuri/" target="_blank">
+                    <img src="images/linkdein.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+    
+        <div class="team-member">
+            <img src="images/Swarna.jpeg" alt="Swarna Sre G">
+            <h3>Swarna Sre Ganesh Shankar</h3>
+            <p>Database Engineer</p>
+            <div class="social-links">
+                <a href="https://github.com/chanabyte" target="_blank">
+                    <img src="images/github.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/swarnasreg/" target="_blank">
+                    <img src="images/linkdein.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+    
+        <div class="team-member">
+            <img src="images/Sreya.jpeg" alt="Sreya Gudipati">
+            <h3>Sreya Gudipati</h3>
+            <p>Frontend Developer</p>
+            <div class="social-links">
+                <a href="https://github.com/SSriya17" target="_blank">
+                    <img src="images/github.png" alt="GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/sreya-gudipati/" target="_blank">
+                    <img src="images/linkdein.png" alt="LinkedIn">
+                </a>
+            </div>
+        </div>
+    </div>    
+
+    <!-- Chatbot UI -->
+<div class="chatbot-container" id="chatbotContainer">
+  <div class="chatbot-header" onclick="toggleChat()">
+    💬 Realty Check Assistant
+  </div>
+  <div class="chatbot-body">
+    <div class="chatbot-messages" id="chatbotMessages"></div>
+    <input type="text" id="chatbotInput" placeholder="Ask me anything..." onkeydown="handleKey(event)">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<!-- Chatbot Toggle Button -->
+<button class="chatbot-toggle" onclick="toggleChat()">💬</button>
+
+
+    <footer>
+        <p>© 2025 Reality Check. All rights reserved.</p>
+    </footer>
+
+    <script src="HomePage.js"></script>
+
+</body>
+</html>

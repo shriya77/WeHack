@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Listings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="listings.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-wrapper">
+        <!-- Left: Logo + Brand -->
+        <div class="nav-left">
+          <a href="HomePage.html">
+            <img src="logo.png" alt="RC Logo" class="logo">
+          </a>
+          <h1 class="brand">RealtyCheck</h1>
+        </div>
+  
+        <!-- Right: Nav links -->
+        <div class="nav-right">
+          <ul class="nav-menu">
+            <li><a href="HomePage.html">Home</a></li>
+            <li><a href="Analysis1.html">Analyze Property</a></li>
+            <li><a href="../listings/listings.html">Listings</a></li>
+            <li><a href="index.html">Forecast ROI</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+
+  <div class="container">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Enter name or address" />
+      <button onclick="searchProperties()">Search</button>
+    </div>
+
+    <h2>Click on a property card to view its Risk Report</h2>
+    <div id="propertyListings" class="listings">
+      <!-- Property cards will be injected here -->
+    </div>
+
+    <button class="compare-btn" onclick="compareSelected()">Comparative Analysis</button>
+  </div>
+
+  <script src="listings.js"></script>
+</body>
+</html>
